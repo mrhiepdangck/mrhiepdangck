@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initCountUp();
     initScrollToTop();
     initSmoothScroll();
+    initVideoModal();
 });
 
 /* ---------- NAVBAR SCROLL EFFECT ---------- */
@@ -231,3 +232,44 @@ function initActiveNav() {
 }
 
 initActiveNav();
+
+/* ---------- VIDEO MODAL ---------- */
+function initVideoModal() {
+    const modal = document.getElementById('videoModal');
+    const backdrop = document.getElementById('videoModalBackdrop');
+    const closeBtn = document.getElementById('videoModalClose');
+    const content = document.getElementById('videoModalContent');
+    const triggers = document.querySelectorAll('.js-video-trigger');
+
+    if (!modal || !triggers.length) return;
+
+    function openModal(videoId) {
+        // Vô hiệu hoá scroll trên trang hiển thị modal
+        document.body.style.overflow = 'hidden';
+        
+        // Nhúng iframe vào container với ID video
+        content.innerHTML = `<iframe src="https://www.tiktok.com/embed/v2/${videoId}" style="width: 100%; height: 100%; border: none; border-radius: var(--radius-lg); background: #000;" allow="autoplay; fullscreen" allowfullscreen></iframe>`;
+        modal.classList.add('active');
+    }
+
+    function closeModal() {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+        
+        // Đợi CSS transition chạy xong mới xoá nội dung container (tránh tắt tiếng ngay lập tức giật cục)
+        setTimeout(() => {
+            content.innerHTML = '';
+        }, 300);
+    }
+
+    triggers.forEach(trigger => {
+        trigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            const videoId = trigger.getAttribute('data-video-id');
+            if (videoId) openModal(videoId);
+        });
+    });
+
+    closeBtn.addEventListener('click', closeModal);
+    backdrop.addEventListener('click', closeModal);
+}
