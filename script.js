@@ -247,8 +247,14 @@ function initVideoModal() {
         // Vô hiệu hoá scroll trên trang hiển thị modal
         document.body.style.overflow = 'hidden';
         
-        // Nhúng iframe vào container với ID video
-        content.innerHTML = `<iframe src="https://www.tiktok.com/embed/v2/${videoId}" style="width: 100%; height: 100%; border: none; border-radius: var(--radius-lg); background: #000;" allow="autoplay; fullscreen" allowfullscreen></iframe>`;
+        // Nhúng YouTube iframe vào container
+        content.innerHTML = `
+            <iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&origin=https://mrhiepdangck.github.io" 
+                    style="width: 100%; height: 100%; border: none; border-radius: var(--radius-lg); background: #000;" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+            </iframe>
+        `;
         modal.classList.add('active');
     }
 
@@ -256,7 +262,7 @@ function initVideoModal() {
         modal.classList.remove('active');
         document.body.style.overflow = '';
         
-        // Đợi CSS transition chạy xong mới xoá nội dung container (tránh tắt tiếng ngay lập tức giật cục)
+        // Đợi CSS transition chạy xong mới xoá nội dung container
         setTimeout(() => {
             content.innerHTML = '';
         }, 300);
@@ -265,7 +271,7 @@ function initVideoModal() {
     triggers.forEach(trigger => {
         trigger.addEventListener('click', (e) => {
             e.preventDefault();
-            const videoId = trigger.getAttribute('data-video-id');
+            const videoId = trigger.getAttribute('data-youtube-id');
             if (videoId) openModal(videoId);
         });
     });
