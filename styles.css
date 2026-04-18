@@ -1320,14 +1320,16 @@ button {
 }
 
 .deal-profit {
-    font-size: 0.75rem;
+    font-family: var(--font-body);
+    font-size: 1rem;
     font-weight: 700;
-    color: #10B981; /* Emerald green for positive profit */
-    background: rgba(16, 185, 129, 0.1);
-    padding: 0.1rem 0.5rem;
-    border-radius: var(--radius-full);
-    letter-spacing: 0;
-    transform: translateY(-2px); /* Slight lift to align with text visually */
+    color: #047857; /* Elegant dark emerald for text */
+    background: #D1FAE5; /* Light pastel emerald background */
+    padding: 0.2rem 0.8rem;
+    border-radius: 100px; /* Fully rounded pill shape */
+    letter-spacing: 0.03em;
+    transform: translateY(-1px);
+    box-shadow: none; /* Removed shadow for a cleaner, flatter look */
 }
 
 .deal-tags {
@@ -1354,6 +1356,14 @@ button {
 .deal-tag-file {
     background: #EEF2FF;
     color: #4F46E5;
+}
+
+a.deal-tag-file:hover,
+button.deal-tag-file:hover {
+    background: #4F46E5;
+    color: #fff;
+    transform: scale(1.05);
+    cursor: pointer;
 }
 
 .deal-tag-video {
