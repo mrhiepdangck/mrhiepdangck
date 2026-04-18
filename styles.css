@@ -767,52 +767,234 @@ button {
     color: var(--color-primary);
 }
 
-.philosophy-pillars {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-lg);
+/* Assertions */
+.help-assertions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    margin-bottom: var(--space-2xl);
 }
 
-.pillar-card {
+.assertion-card {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-lg);
     padding: var(--space-xl);
     background: var(--color-surface);
     border-radius: var(--radius-lg);
     border: 1px solid var(--color-border-light);
-    text-align: center;
-    transition: all var(--transition-base);
+    border-left: 4px solid var(--color-accent);
     box-shadow: var(--shadow-sm);
+    transition: all var(--transition-base);
 }
 
-.pillar-card:hover {
-    transform: translateY(-4px);
+.assertion-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.assertion-icon {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-full);
+    background: linear-gradient(135deg, rgba(184, 146, 74, 0.15), rgba(184, 146, 74, 0.05));
+    color: var(--color-accent);
+}
+
+.assertion-card p {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--color-text);
+}
+
+.assertion-card strong {
+    color: var(--color-primary);
+}
+
+.assertion-card .highlight {
+    color: var(--color-accent);
+    font-weight: 700;
+}
+
+/* Help Intro Text */
+.help-intro-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--color-text);
+    margin-bottom: var(--space-xl);
+    text-align: center;
+}
+
+.help-intro-text strong {
+    color: var(--color-primary);
+}
+
+/* 3 Analysis Layers */
+.help-layers {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+    margin-bottom: var(--space-2xl);
+}
+
+.help-layer-card {
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border-light);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    transition: all var(--transition-base);
+}
+
+.help-layer-card:hover {
     box-shadow: var(--shadow-lg);
+    transform: translateY(-3px);
     border-color: var(--color-accent);
 }
 
-.pillar-icon {
-    display: inline-flex;
+.help-layer-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-lg) var(--space-xl);
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+    color: #fff;
+}
+
+.help-layer-number {
+    display: flex;
     align-items: center;
     justify-content: center;
-    width: 56px;
-    height: 56px;
-    border-radius: var(--radius-md);
-    background: var(--color-accent-glow);
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-full);
+    background: rgba(255, 255, 255, 0.15);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--color-accent-light);
+    flex-shrink: 0;
+}
+
+.help-layer-icon {
+    display: flex;
+    align-items: center;
+    color: var(--color-accent-light);
+}
+
+.help-layer-header h3 {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.help-layer-body {
+    padding: var(--space-xl);
+}
+
+.help-layer-prompt {
+    font-size: 0.9rem;
+    font-weight: 600;
     color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
     margin-bottom: var(--space-md);
 }
 
-.pillar-card h3 {
-    font-family: var(--font-heading);
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--color-primary);
-    margin-bottom: var(--space-sm);
+.help-questions {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
 }
 
-.pillar-card p {
+.help-questions li {
+    position: relative;
+    padding-left: var(--space-xl);
+    font-size: 0.98rem;
+    line-height: 1.8;
+    color: var(--color-text);
+}
+
+.help-questions li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    opacity: 0.6;
+}
+
+/* Closing CTA */
+.help-closing-cta {
+    position: relative;
+    padding: var(--space-2xl);
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    text-align: center;
+}
+
+.help-closing-cta .philosophy-quote-mark {
+    color: var(--color-accent-light);
+    opacity: 0.15;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -5px;
+}
+
+.help-closing-cta .philosophy-quote {
+    color: #fff;
+    font-size: 1.2rem;
+}
+
+.help-closing-cta .philosophy-quote .highlight {
+    color: var(--color-accent-light);
+}
+
+/* Help Layer File Tag */
+.help-layer-file {
+    margin-top: var(--space-lg);
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--color-border-light);
+}
+
+.help-file-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: 0.5rem 1.25rem;
+    background: var(--color-accent-glow);
+    color: var(--color-accent) !important;
     font-size: 0.88rem;
-    color: var(--color-text-muted);
-    line-height: 1.6;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(184, 146, 74, 0.25);
+    transition: all var(--transition-base);
+    text-decoration: none;
+}
+
+.help-file-tag:hover {
+    background: var(--color-accent);
+    color: #fff !important;
+    border-color: var(--color-accent);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-gold);
+}
+
+.help-file-tag svg {
+    flex-shrink: 0;
 }
 
 /* ---------- METHODOLOGY SECTION ---------- */
@@ -1006,8 +1188,31 @@ button {
     font-weight: 500;
     color: var(--color-accent);
     background: var(--color-accent-glow);
-    border-radius: 100px;
-    letter-spacing: 0.02em;
+    border-radius: var(--radius-sm);
+}
+
+.method-file-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: 0.35rem 0.85rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #fff !important;
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-light) 100%);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-base);
+    text-decoration: none;
+}
+
+.method-file-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-gold);
+}
+
+.method-file-btn svg {
+    flex-shrink: 0;
 }
 
 /* ---------- DEALS SECTION ---------- */
@@ -1109,6 +1314,20 @@ button {
     font-weight: 700;
     color: var(--color-primary);
     letter-spacing: 0.02em;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+}
+
+.deal-profit {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #10B981; /* Emerald green for positive profit */
+    background: rgba(16, 185, 129, 0.1);
+    padding: 0.1rem 0.5rem;
+    border-radius: var(--radius-full);
+    letter-spacing: 0;
+    transform: translateY(-2px); /* Slight lift to align with text visually */
 }
 
 .deal-tags {
@@ -1493,9 +1712,9 @@ button.deal-tag-video:hover {
 }
 
 /* Stagger children */
-.philosophy-pillars .pillar-card:nth-child(1) { transition-delay: 0.1s; }
-.philosophy-pillars .pillar-card:nth-child(2) { transition-delay: 0.2s; }
-.philosophy-pillars .pillar-card:nth-child(3) { transition-delay: 0.3s; }
+.help-layers .help-layer-card:nth-child(1) { transition-delay: 0.1s; }
+.help-layers .help-layer-card:nth-child(2) { transition-delay: 0.2s; }
+.help-layers .help-layer-card:nth-child(3) { transition-delay: 0.3s; }
 
 .method-cards .method-card:nth-child(1) { transition-delay: 0.05s; }
 .method-cards .method-card:nth-child(2) { transition-delay: 0.1s; }
@@ -1542,8 +1761,9 @@ button.deal-tag-video:hover {
         position: static;
     }
 
-    .philosophy-pillars {
-        grid-template-columns: repeat(3, 1fr);
+    .assertion-card {
+        gap: var(--space-md);
+        padding: var(--space-lg);
     }
 
     .method-cards {
@@ -1608,8 +1828,14 @@ button.deal-tag-video:hover {
         height: 1px;
     }
 
-    .philosophy-pillars {
-        grid-template-columns: 1fr;
+    .assertion-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .help-layer-header h3 {
+        font-size: 1.05rem;
     }
 
     .contact-grid {
@@ -1716,4 +1942,42 @@ button.deal-tag-video:hover {
 
 ::-webkit-scrollbar-thumb:hover {
     background: var(--color-text-light);
+}
+
+/* ---------- HERO DEAL LINKS ---------- */
+.hero-deal-link {
+    color: var(--color-accent) !important;
+    font-weight: 700;
+    text-decoration: none;
+    position: relative;
+    cursor: pointer;
+    border-bottom: 2px solid var(--color-accent-light);
+    padding-bottom: 1px;
+    transition: all var(--transition-base);
+}
+
+.hero-deal-link:hover {
+    color: var(--color-primary) !important;
+    border-bottom-color: var(--color-primary);
+    text-shadow: 0 0 12px var(--color-accent-glow);
+}
+
+/* ---------- DEAL CARD FLASH HIGHLIGHT ---------- */
+.deal-card-highlight-flash {
+    animation: deal-flash 1.5s ease-out;
+}
+
+@keyframes deal-flash {
+    0% {
+        box-shadow: 0 0 0 0 rgba(184, 146, 74, 0.6);
+        border-color: var(--color-accent);
+    }
+    40% {
+        box-shadow: 0 0 20px 8px rgba(184, 146, 74, 0.3);
+        border-color: var(--color-accent);
+    }
+    100% {
+        box-shadow: var(--shadow-sm);
+        border-color: var(--color-border-light);
+    }
 }

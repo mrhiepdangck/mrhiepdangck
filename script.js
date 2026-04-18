@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollToTop();
     initSmoothScroll();
     initVideoModal();
+    initDealScrollLinks();
 });
 
 /* ---------- NAVBAR SCROLL EFFECT ---------- */
@@ -278,4 +279,49 @@ function initVideoModal() {
 
     closeBtn.addEventListener('click', closeModal);
     backdrop.addEventListener('click', closeModal);
+}
+
+/* ---------- DEAL SCROLL LINKS (Hero → Deals) ---------- */
+function initDealScrollLinks() {
+    const dealLinks = document.querySelectorAll('.js-deal-scroll');
+
+    if (!dealLinks.length) return;
+
+    dealLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute('data-deal-target');
+            const targetCard = document.getElementById(targetId);
+
+            if (!targetCard) return;
+
+            // Ensure animated class is added so card is visible
+            targetCard.classList.add('animated');
+
+            // Smooth scroll to the card
+            const navHeight = document.getElementById('navbar').offsetHeight;
+            const targetPosition = targetCard.getBoundingClientRect().top + window.pageYOffset - navHeight - 40;
+
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+
+            // After scroll completes, highlight card & auto-open video
+            setTimeout(() => {
+                // Flash highlight effect
+                targetCard.classList.add('deal-card-highlight-flash');
+                setTimeout(() => {
+                    targetCard.classList.remove('deal-card-highlight-flash');
+                }, 1500);
+
+                // Auto-trigger the video button on that card
+                const videoBtn = targetCard.querySelector('.js-video-trigger');
+                if (videoBtn) {
+                    videoBtn.click();
+                }
+            }, 800);
+        });
+    });
 }
